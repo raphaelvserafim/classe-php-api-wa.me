@@ -1,0 +1,16 @@
+{
+    "name": "cachesistemas/classe-php-api-wame",
+    "description": "Classe PHP comincacao com api-wa.me",
+    "autoload": {
+        "psr-4": {
+            "Cachesistemas\\ClassePhpApiWame\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Raphael Serafim",
+            "email": "raphaelvserafim@gmail.com"
+        }
+    ],
+    "require": {}
+}
