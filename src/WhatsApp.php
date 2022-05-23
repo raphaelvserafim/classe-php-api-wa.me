@@ -1,5 +1,6 @@
 <?php
 
+namespace Cachesistemas\ClassePhpApiWame;
 
 
 class WhatsApp
