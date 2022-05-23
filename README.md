@@ -8,7 +8,7 @@
 ## Instalando via composer 
 
 ```
-composer  require cachesistemas/classe-php-api-wame 
+composer require cachesistemas/classe-php-api-wame 
 ```
 
 #####  WHATSAPP   
