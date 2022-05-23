@@ -15,5 +15,6 @@
             "email": "raphaelvserafim@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "minimum-stability":"dev"
 }
