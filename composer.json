@@ -1,6 +1,8 @@
 {
     "name": "cachesistemas/classe-php-api-wame",
     "description": "Classe PHP comincacao com api-wa.me",
+    "license": "MIT",
+    "type": "project",
     "autoload": {
         "psr-4": {
             "Cachesistemas\\ClassePhpApiWame\\": "src/"
@@ -12,5 +14,6 @@
             "email": "raphaelvserafim@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "minimum-stability": "dev"
 }
