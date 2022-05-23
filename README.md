@@ -1,8 +1,8 @@
-# Classe WhatsApp PHP api-wa.me 
+# WhatsApp API PHP api-wa.me  
 
-##### SITE 
+##### Gerar Instância Key:
  
-<a href="https://api-wa.me">api-wa.me</a>
+Acessar: <a href="https://api-wa.me">api-wa.me</a>
 
 
 ## Instalando via composer 
