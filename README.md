@@ -23,6 +23,21 @@ $whasapp     = new WhatsApp(["server" => "Servidor da API", "key" => "Sua Instâ
 
 ```
 
+### EXEMPLOS
+
+
+#####  SIMULAR PRESENÇA 
+
+```php
+echo $whasapp->simularPresenca("5566996852025",   "composing"); //  unavailable  |  available |  composing  |  recording  |  paused
+
+```
+#### RETORNO
+```json
+{"status":true,"whatsapp":"556696852025@s.whatsapp.net"} 
+```
+
+
 ##### ENVIAR MENSAGEM DE TEXTO   
 
 ```php
