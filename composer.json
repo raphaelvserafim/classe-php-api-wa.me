@@ -3,7 +3,7 @@
     "description": "Classe PHP comunicação com api-wa.me",
     "type": "library",
     "homepage": "https://github.com/raphaelvserafim/classe-php-api-wa.me",
-    "license": "Apache2",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Cachesistemas\\ClassePhpApiWame\\": "src/"
