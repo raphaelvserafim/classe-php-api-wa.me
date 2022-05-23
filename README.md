@@ -4,6 +4,7 @@
  
 Acessar: <a href="https://api-wa.me">api-wa.me</a>
 
+Documentação completa: <a href="https://api-wa.me/site/docs">Docs</a>
 
 ## Instalando via composer 
 
