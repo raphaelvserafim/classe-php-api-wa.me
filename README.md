@@ -8,7 +8,7 @@
 ## Instalando via composer 
 
 ```
-composer  
+composer   cachesistemas/classe-php-api-wame
 
 ```
 
