@@ -15,11 +15,12 @@ composer require cachesistemas/classephpapiwame
 
 ```php
  
- 
- 
+use Cachesistemas\ClassePhpApiWame\WhatsApp;
+
+
 include_once 'vendor/autoload.php';
 
- 
+$whasapp     = new WhatsApp(["server" => "Servidor da API", "key" => "Sua Instância Key"]);
 
- 
+
 ```
