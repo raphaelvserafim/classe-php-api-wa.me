@@ -24,3 +24,17 @@ $whasapp     = new WhatsApp(["server" => "Servidor da API", "key" => "Sua Instâ
 
 
 ```
+
+##### ENVIO DE TEXTO   
+
+```php
+ echo $whasapp->enviarMensagemTexto("5566996852025",  "Oie");
+ 
+```
+#### RETORNO
+```json
+
+{"error":false,"message":"Mensagem enviada","messageData":{"key":{"remoteJid":"556696852025@s.whatsapp.net","fromMe":true,"id":"BAE58DC39F03C286"},"message":{"extendedTextMessage":{"text":"Oie"}},"messageTimestamp":"1653332312","status":"PENDING"}}
+ 
+```
+
