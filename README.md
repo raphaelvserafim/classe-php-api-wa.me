@@ -29,22 +29,12 @@ $whasapp     = new WhatsApp(["server" => "Servidor da API", "key" => "Sua Instâ
 
 ### EXEMPLOS
 
-#### DEFINIR URL WEBHOOK 
-```php
-echo   $whasapp->atualizarUrlWebhook("https://webhook.site/9d308ff3-0dc5-4f55-882f-b10caed5cae5") // SUA URL PARA RECEBER OS EVENTOS  
 
-```
-#### ABILITAR URL WEBHOOK 
-```php
-echo   $whasapp->abilitarUrlWebhook()  
-
-```
 
 #### GERANDO QRCODE PARA CONECTAR WHATSAPP
 
 ```php
 echo $whasapp->qrCode()
-
 ```
 #### RETORNO
 ```json
@@ -55,6 +45,14 @@ echo $whasapp->qrCode()
 }
 ```
 
+#### DEFINIR URL WEBHOOK 
+```php
+echo   $whasapp->atualizarUrlWebhook("https://webhook.site/9d308ff3-0dc5-4f55-882f-b10caed5cae5") // SUA URL PARA RECEBER OS EVENTOS  
+```
+#### ABILITAR URL WEBHOOK 
+```php
+echo   $whasapp->abilitarUrlWebhook()  
+```
 
 #####  SIMULAR PRESENÇA 
 
