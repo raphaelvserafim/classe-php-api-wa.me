@@ -12,6 +12,8 @@ Documentação completa: <a href="https://api-wa.me/site/docs">Docs</a>
 composer require cachesistemas/classephpapiwame
 ```
 
+### EXEMPLOS
+
 
 
 
@@ -26,10 +28,6 @@ include_once 'vendor/autoload.php';
 $whasapp     = new WhatsApp(["server" => "Servidor da API", "key" => "Sua Instância Key"]);
 
 ```
-
-### EXEMPLOS
-
-
 
 #### GERANDO QRCODE PARA CONECTAR WHATSAPP
 
