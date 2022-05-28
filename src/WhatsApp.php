@@ -27,22 +27,13 @@ class WhatsApp
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->server . $this->parth);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        switch ($this->method) {
-            case 'GET':
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $this->method);
-                break;
-
-            case 'POST':
-                curl_setopt($ch, CURLOPT_POST, 1);
-                curl_setopt($ch, CURLOPT_POSTFIELDS,  $this->body);
-
-                break;
-        }
-
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $this->method);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,  $this->body);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
-            return curl_error($ch);
+        return curl_error($ch);
         }
         curl_close($ch);
         return $result;
@@ -78,7 +69,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function atualizarUrlWebhook(string $url)
+    public function atualizarUrlWebhook($url)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/webhook/' . $this->key . '/updateUrl';
@@ -97,7 +88,7 @@ class WhatsApp
     }
 
 
-    public function validarNumero(string $numero)
+    public function validarNumero($numero)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/consultas/' . $this->key . '/numeroValido';
@@ -107,7 +98,7 @@ class WhatsApp
     }
 
 
-    public function simularPresenca(string $numero,  string $presenca)
+    public function simularPresenca(  $numero,    $presenca)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/actions/' . $this->key . '/simularPresenca';
@@ -118,7 +109,7 @@ class WhatsApp
 
 
 
-    public function enviarMensagemTexto(string $numero,  string $texto)
+    public function enviarMensagemTexto(  $numero,    $texto)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/texto';
@@ -127,7 +118,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function enviarMensagemLink(string $numero,  string $texto, string $url)
+    public function enviarMensagemLink(  $numero,    $texto,   $url)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/link';
@@ -136,7 +127,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function enviarMensagemMidia(string $numero, string  $url, string $type, string $caption, string $mimeType, string $nameFile)
+    public function enviarMensagemMidia(  $numero,    $url,   $type,   $caption,   $mimeType,   $nameFile)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/midia';
@@ -146,7 +137,7 @@ class WhatsApp
     }
 
 
-    public function enviarMensagemBotoes(string $numero, string $texto, string $rodape, array $botoes)
+    public function enviarMensagemBotoes(  $numero,   $texto,   $rodape,   $botoes)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/botoes';
@@ -156,7 +147,7 @@ class WhatsApp
     }
 
 
-    public function enviarMensagemLista(string $numero, string $nomeLista, string $nomeBtn,  string $texto, string $rodape, array $sections)
+    public function enviarMensagemLista(  $numero,   $nomeLista,   $nomeBtn,    $texto,   $rodape,   $sections)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/botoesLista';
@@ -178,7 +169,7 @@ class WhatsApp
     }
 
 
-    public function enviarLocalizacao(string $numero,  string $latitude, string $longitude)
+    public function enviarLocalizacao(  $numero,    $latitude,   $longitude)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/localizacao';
@@ -187,7 +178,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function enviarContato(string $numero,  string $nome, string $phoneNumber)
+    public function enviarContato(  $numero,    $nome,   $phoneNumber)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/contato';
@@ -215,7 +206,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function criarGrupo(string $nome,   array $participantes)
+    public function criarGrupo( $nome, $participantes)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/group/' . $this->key . '/create';
