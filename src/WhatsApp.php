@@ -381,7 +381,7 @@ class WhatsApp
 
     public function sendLocation($key,  $body)
     {
-      /* EXEMPLO BODY 
+        /* EXEMPLO BODY 
       $body  = [
         "data" => [
                 "to" => "string", 
@@ -400,25 +400,20 @@ class WhatsApp
         return $this->request();
     }
 
-    public function sendReaction($key,  $body)
+    
+    public function sendReaction($key,  $to, $text, $id)
     {
-        /* EXEMPLO BODY
-            $body = [
+        $body = [
             "data" => [
-                    "to" => "556696852025", 
-                    "text" => "😍", 
-                    "MsgId" => "string" 
-                ] 
-            ]; 
-        */
+                "to" => $to,
+                "text" => $text,
+                "MsgId" => $id 
+            ]
+        ];
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/message/reaction?key={$key}";
         $this->method = "POST";
         $this->body   = json_encode($body);
         return $this->request();
     }
-   
-
- 
- 
 }
