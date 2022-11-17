@@ -132,4 +132,76 @@ $ptt        = false; // if it's audio
 echo $whasapp->sendMedia($to, $url, $type, $caption, $mimeType, $ptt);
 ```
  
+ ### Send Button
+ ```php
+    $body = [
+        "to" => "556696852025",
+        "data" => [
+            "text" => "Recebeu ?",
+            "buttons" => [
+                [
+                    "title" => "Sim",
+                    "id" => "1"
+                ],
+                [
+                    "title" => "Não",
+                    "id" => "2"
+                ]
+            ],
+            "footerText" => "Escolha uma opção"
+        ]
+    ];
+echo $whasapp->sendButton($body);
+```
+
+ ### Send Template Buttons
+ ```php
+    $body = [
+        "to" => "556696852025",
+        "data" => [
+            "text" => "Finalizar a compra",
+            "buttons" => [
+                [
+                    "type" => "urlButton", // replyButton | urlButton | callButton 
+                    "title" => "Pagar",
+                    "payload" => "https://api-wa.me"
+                ]
+            ],
+            "footerText" => "Visite o site para finalizar"
+        ]
+    ];
+echo $whasapp->sendTemplateButtons($body);
+```
  
+
+ ### Send List 
+ ```php
+    $body = [
+        "messageData" => [
+            "to" => "556696852025",
+            "buttonText" => "Menu",
+            "text" => "Esse nosso menu",
+            "title" => "Menu",
+            "description" => "veja nosso menu",
+            "sections" => [
+                [
+                    "title" => "Menu 01",
+                    "rows" => [
+                        [
+                            "title" => "Opção 01",
+                            "description" => "essa é uma opção",
+                            "rowId" => "1"
+                        ],
+                        [
+                            "title" => "Opção 02",
+                            "description" => "essa é outra opção",
+                            "rowId" => "2"
+                        ]
+                    ]
+                ]
+            ],
+            "listType" => 0
+        ]
+    ];
+echo $whasapp->sendList($body);
+```

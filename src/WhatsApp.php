@@ -107,7 +107,7 @@ class WhatsApp
 
     public function updateWebhook($body)
     {
-       
+
         array_push($this->header, 'Content-Type: application/json');
         $this->parth    = "/instance/updateWebhook?key={$this->key}";
         $this->method   = "POST";
@@ -151,7 +151,7 @@ class WhatsApp
     }
 
 
-    public function updateProfilePicture($to, $url) 
+    public function updateProfilePicture($to, $url)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/actions/updateProfilePicture?key={$this->key}";
@@ -174,16 +174,6 @@ class WhatsApp
 
     public function downloadMediaMessage($body)
     {
-        /* EXEMPLO BODY 
-       $body = [
-            "messageKeys" => [
-                "mediaKey" => "string", 
-                "directPath" => "string", 
-                "url" => "string", 
-                "messageType" => "string" 
-            ] 
-         ] 
-         */
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/actions/downloadMediaMessage?key={$this->key}";
         $this->method = "POST";
@@ -249,25 +239,7 @@ class WhatsApp
 
     public function sendButton($body)
     {
-        /* EXEMPLO BODY 
-        $body = [
-            "to" => "556696852025",
-            "data" => [
-                "text" => "Recebeu ?",
-                "buttons" => [
-                    [
-                        "title" => "Sim",
-                        "id" => "1"
-                    ],
-                    [
-                        "title" => "Não",
-                        "id" => "2"
-                    ]
-                ],
-                "footerText" => "Escolha uma opção"
-            ]
-        ];
-        */
+         
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/message/button?key={$this->key}";
         $this->method = "POST";
@@ -277,23 +249,7 @@ class WhatsApp
 
     public function sendTemplateButtons($body)
     {
-        /* EXEMPLO BODY  replyButton | urlButton | callButton
-        $body = [
-            "to" => "556696852025",
-            "data" => [
-                "text" => "Finalizar a compra",
-                "buttons" => [
-                    [
-                        "type" => "urlButton",
-                        "title" => "Pagar",
-                        "payload" => "https://api-wa.me"
-                    ]
-                ],
-                "footerText" => "Visite o site para finalizar"
-            ]
-        ];
-        */
-
+        
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/message/templateButtons?key={$this->key}";
         $this->method = "POST";
@@ -304,36 +260,6 @@ class WhatsApp
 
     public function sendList($body)
     {
-        /* EXEMPLO BODY 
-        $body = [
-            "messageData" => [
-                "to" => "556696852025",
-                "buttonText" => "Menu",
-                "text" => "Esse nosso menu",
-                "title" => "Menu",
-                "description" => "veja nosso menu",
-                "sections" => [
-                    [
-                        "title" => "Menu 01",
-                        "rows" => [
-                            [
-                                "title" => "Opção 01",
-                                "description" => "essa é uma opção",
-                                "rowId" => "1"
-                            ],
-                            [
-                                "title" => "Opção 02",
-                                "description" => "essa é outra opção",
-                                "rowId" => "2"
-                            ]
-                        ]
-                    ]
-                ],
-                "listType" => 0
-            ]
-        ];
-        */
-
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/message/list?key={$this->key}";
         $this->method = "POST";
