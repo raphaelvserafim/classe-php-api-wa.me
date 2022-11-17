@@ -49,6 +49,17 @@ class WhatsApp
 
     public function Create($admin_key,  $key,   $body)
     {
+
+        /* EXEMPLO 
+        $body = [
+        "allowWebhook" => true, 
+        "webhookMessage" => "", 
+        "webhookGroup" => "", 
+        "webhookConnection" => "", 
+        "webhookQrCode" => "" 
+        ]; 
+        */
+
         $this->parth  = "/instance/create?key={$key}&admin_key={$admin_key}";
         $this->method = "POST";
         $this->body   = json_encode($body);
@@ -77,42 +88,64 @@ class WhatsApp
 
     public function getQrCodeBase64($key)
     {
-        $this->parth  = "instance/qrcode_base64={$key}";
+        $this->parth  = "/instance/qrcode_base64={$key}";
         $this->method = "GET";
         return $this->request();
     }
 
-    public function logout()
+
+    public function inforInstance($key)
     {
-        $this->parth  = '/rest/instances/' . $this->key . '/logout';
-        $this->method = 'GET';
+        $this->parth  = "/instance/info?key={$key}";
+        $this->method = "GET";
         return $this->request();
     }
 
-    public function webhookDetalhes()
-    {
-        $this->parth  = '/rest/webhook/' . $this->key;
-        $this->method = 'GET';
-        return $this->request();
-    }
 
-    public function atualizarUrlWebhook($url)
+    public function updateWebhook($key, $body)
     {
+        /* EXEMPLO 
+        $body = [
+        "allowWebhook" => true, 
+        "webhookMessage" => "", 
+        "webhookGroup" => "", 
+        "webhookConnection" => "", 
+        "webhookQrCode" => "" 
+        ]; 
+        */
+
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/webhook/' . $this->key . '/updateUrl';
-        $this->method = 'POST';
-        $this->body   = json_encode(array('data' => array('url' => $url)));
+        $this->parth    = "/instance/updateWebhook?key={$key}";
+        $this->method   = "POST";
+        $this->body     = json_encode($body);
         return $this->request();
     }
 
-    public function abilitarUrlWebhook()
+
+    public function logout($key)
     {
-        array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/webhook/' . $this->key . '/enableMessage';
-        $this->method = 'POST';
-        $this->body   = json_encode(array('data' => array('sendWebhook' => true)));
+
+        $this->parth  = "/instance/logout?key={$key}";
+        $this->method = "DELETE";
         return $this->request();
     }
+
+    // Actions 
+
+    public function listContacts($key)
+    {
+        $this->parth  = "/action/contacts?key={$key}";
+        $this->method = "GET";
+        return $this->request();
+    }
+
+    public function profilePic($key, $to){
+      
+        $this->parth  = "/actions/getPicture?key={$key}&to={$to}";
+        $this->method = "GET";
+        return $this->request();
+    }
+
 
 
     public function validarNumero($numero)
