@@ -402,15 +402,14 @@ class WhatsApp
 
     public function sendReaction($key,  $body)
     {
-      /* EXEMPLO BODY 
-     
-        $body = [
-        "data" => [
-                "to" => "556696852025", 
-                "text" => "😍", 
-                "MsgId" => "string" 
-            ] 
-        ]; 
+        /* EXEMPLO BODY
+            $body = [
+            "data" => [
+                    "to" => "556696852025", 
+                    "text" => "😍", 
+                    "MsgId" => "string" 
+                ] 
+            ]; 
         */
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/message/reaction?key={$key}";
@@ -421,6 +420,5 @@ class WhatsApp
    
 
  
-
  
 }
