@@ -3,7 +3,7 @@
 namespace Cachesistemas\ClassePhpApiWame;
 
 
-class WhatsApp  
+class WhatsApp
 {
     private $key;
     private $server;
@@ -16,7 +16,6 @@ class WhatsApp
     {
 
         $this->server =  $dados["server"];
-        $this->key    =  $dados["key"];
     }
 
 
@@ -32,7 +31,7 @@ class WhatsApp
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
-        return curl_error($ch);
+            return curl_error($ch);
         }
         curl_close($ch);
         return $result;
@@ -40,39 +39,46 @@ class WhatsApp
 
 
     // ManagerInstance // 
-    public function ListAllInstance($admin_key){
-		$this->parth  = '/instance/list?admin_key=' . $admin_key;
-        $this->method = 'GET';
-        return $this->request();
-	}
-
-	public function Create($admin_key){
-		$this->parth  = '/instance/create?key='.$this->key.'&admin_key=' . $admin_key;
-        $this->method = 'POST';
-        $this->body   = json_encode([
-          "allowWebhook" => true, 
-          "webhookMessage" => "", 
-          "webhookGroup" => "", 
-          "webhookConnection" => "", 
-          "webhookQrCode" => "" 
-        ]);
-   
-        return $this->request();
-	}
-
-
-
-    public function informacaoes()
+    public function ListAllInstance($admin_key)
     {
-        $this->parth  = '/rest/instances/' . $this->key;
-        $this->method = 'GET';
+        $this->parth  = "/instance/list?admin_key={$admin_key}";
+        $this->method = "GET";
         return $this->request();
     }
 
-    public function qrCode()
+
+    public function Create($admin_key,  $key,   $body)
     {
-        $this->parth  = '/rest/instances/' . $this->key . '/qrcode_base64';
-        $this->method = 'GET';
+        $this->parth  = "/instance/create?key={$key}&admin_key={$admin_key}";
+        $this->method = "POST";
+        $this->body   = json_encode($body);
+
+        return $this->request();
+    }
+
+    public function Delete($admin_key,   $key)
+    {
+        $this->parth  = "/instance/delete?key={$key}&admin_key={$admin_key}";
+        $this->method = "DELETE";
+        return $this->request();
+    }
+
+
+
+
+    //Instance
+
+    public function getQrCodeHTML($key)
+    {
+        $this->parth  = "/instance/qrcode?key={$key}";
+        $this->method = "GET";
+        return $this->request();
+    }
+
+    public function getQrCodeBase64($key)
+    {
+        $this->parth  = "instance/qrcode_base64={$key}";
+        $this->method = "GET";
         return $this->request();
     }
 
@@ -119,7 +125,7 @@ class WhatsApp
     }
 
 
-    public function simularPresenca(  $numero,    $presenca)
+    public function simularPresenca($numero,    $presenca)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/actions/' . $this->key . '/simularPresenca';
@@ -130,7 +136,7 @@ class WhatsApp
 
 
 
-    public function enviarMensagemTexto(  $numero,    $texto)
+    public function enviarMensagemTexto($numero,    $texto)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/texto';
@@ -139,7 +145,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function enviarMensagemLink(  $numero,    $texto,   $url)
+    public function enviarMensagemLink($numero,    $texto,   $url)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/link';
@@ -148,7 +154,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function enviarMensagemMidia(  $numero,    $url,   $type,   $caption,   $mimeType,   $nameFile)
+    public function enviarMensagemMidia($numero,    $url,   $type,   $caption,   $mimeType,   $nameFile)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/midia';
@@ -158,7 +164,7 @@ class WhatsApp
     }
 
 
-    public function enviarMensagemBotoes(  $numero,   $texto,   $rodape,   $botoes)
+    public function enviarMensagemBotoes($numero,   $texto,   $rodape,   $botoes)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/botoes';
@@ -168,7 +174,7 @@ class WhatsApp
     }
 
 
-    public function enviarMensagemLista(  $numero,   $nomeLista,   $nomeBtn,    $texto,   $rodape,   $sections)
+    public function enviarMensagemLista($numero,   $nomeLista,   $nomeBtn,    $texto,   $rodape,   $sections)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/botoesLista';
@@ -190,7 +196,7 @@ class WhatsApp
     }
 
 
-    public function enviarLocalizacao(  $numero,    $latitude,   $longitude)
+    public function enviarLocalizacao($numero,    $latitude,   $longitude)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/localizacao';
@@ -199,7 +205,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function enviarContato(  $numero,    $nome,   $phoneNumber)
+    public function enviarContato($numero,    $nome,   $phoneNumber)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/send/' . $this->key . '/contato';
@@ -227,7 +233,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function criarGrupo( $nome, $participantes)
+    public function criarGrupo($nome, $participantes)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = '/rest/group/' . $this->key . '/create';
