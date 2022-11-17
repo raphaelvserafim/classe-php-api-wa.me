@@ -379,31 +379,5 @@ class WhatsApp
         return $this->request();
     }
 
-
-
-
-    public function grupos()
-    {
-        $this->parth  = '/rest/group/' . $this->key . '/list';
-        $this->method = 'GET';
-        return $this->request();
-    }
-
-
-    public function gruposADM()
-    {
-        $this->parth  = '/rest/group/' . $this->key . '/adminGroups';
-        $this->method = 'GET';
-        return $this->request();
-    }
-
-    public function criarGrupo($nome, $participantes)
-    {
-        array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/group/' . $this->key . '/create';
-        $this->method = 'POST';
-        $this->body   = json_encode(array('group_data' => array('group_name' => $nome, 'participants' => $participantes)));
-
-        return $this->request();
-    }
+ 
 }
