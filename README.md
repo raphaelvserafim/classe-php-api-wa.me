@@ -121,7 +121,7 @@ echo $whasapp->sendText($to, $text);
 
 ###  send Media 
 #### 
-``This endpoint allows you to send a media URL to a user.
+|This endpoint allows you to send a media URL to a user.
 The url parameter is the URL of the media to be loaded.
 The to parameter is the phone number of the user to send the media to.
 The type parameter is the type of media to be sent.
@@ -132,7 +132,7 @@ audio - an audio, use ppt=true for recorded audio
 document - a document
 The caption parameter is the caption of the media to be sent.
 The mimeType parameter is the mimeType of the media. See the mimeType list.
-`` 
+|
 
  ```php 
 $to         = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
