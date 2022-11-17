@@ -4,7 +4,7 @@
  
 Acessar: <a href="https://api-wa.me">api-wa.me</a>
 
-Documentação completa: <a href="https://api-wa.me/site/docs">Docs</a>
+Documentação completa: <a href="https://server.api-wa.me/docs/">Swagger</a>
 
 #####  Contato:
 <a href="https://wa.me/5566996852025"> 
