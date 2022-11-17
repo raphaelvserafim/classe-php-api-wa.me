@@ -14,8 +14,11 @@ class WhatsApp
 
     public function __construct(array $dados)
     {
+        $this->server   =   $dados["server"];
 
-        $this->server =  $dados["server"];
+        if (isset($dados["key"])) {
+            $this->key      =   $dados["key"];
+        }
     }
 
 
@@ -79,30 +82,30 @@ class WhatsApp
 
     //Instance
 
-    public function getQrCodeHTML($key)
+    public function getQrCodeHTML()
     {
-        $this->parth  = "/instance/qrcode?key={$key}";
+        $this->parth  = "/instance/qrcode?key={$this->key}";
         $this->method = "GET";
         return $this->request();
     }
 
-    public function getQrCodeBase64($key)
+    public function getQrCodeBase64()
     {
-        $this->parth  = "/instance/qrcode_base64={$key}";
-        $this->method = "GET";
-        return $this->request();
-    }
-
-
-    public function inforInstance($key)
-    {
-        $this->parth  = "/instance/info?key={$key}";
+        $this->parth  = "/instance/qrcode_base64={$this->key}";
         $this->method = "GET";
         return $this->request();
     }
 
 
-    public function updateWebhook($key, $body)
+    public function inforInstance()
+    {
+        $this->parth  = "/instance/info?key={$this->key}";
+        $this->method = "GET";
+        return $this->request();
+    }
+
+
+    public function updateWebhook($body)
     {
         /* EXEMPLO 
         $body = [
@@ -115,71 +118,70 @@ class WhatsApp
         */
 
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth    = "/instance/updateWebhook?key={$key}";
+        $this->parth    = "/instance/updateWebhook?key={$this->key}";
         $this->method   = "POST";
         $this->body     = json_encode($body);
         return $this->request();
     }
 
 
-    public function logout($key)
+    public function logout()
     {
-
-        $this->parth  = "/instance/logout?key={$key}";
+        $this->parth  = "/instance/logout?key={$this->key}";
         $this->method = "DELETE";
         return $this->request();
     }
 
+
     // Actions 
 
-    public function listContacts($key)
+    public function listContacts()
     {
-        $this->parth  = "/action/contacts?key={$key}";
+        $this->parth  = "/action/contacts?key={$this->key}";
         $this->method = "GET";
         return $this->request();
     }
 
-    public function profilePic($key, $to)
+    public function profilePic($to)
     {
-
-        $this->parth  = "/actions/getPicture?key={$key}&to={$to}";
+        $this->parth  = "/actions/getPicture?key={$this->key}&to={$to}";
         $this->method = "GET";
         return $this->request();
     }
 
 
-    public function updateProfileName($key, $name)
+    public function updateProfileName($name)
     {
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/actions/updateProfileName?key={$key}";
+        $this->parth  = "/actions/updateProfileName?key={$this->key}";
         $this->method = "POST";
         $this->body = json_encode(["name" => $name]);
         return $this->request();
     }
 
 
-    public function updateProfilePicture($key, $body) // AND GROUP
+    public function updateProfilePicture($to, $url) // AND GROUP
     {
-        // $body = ["to" => "string", "url" => "string"] EXEMPLO 
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/actions/updateProfilePicture?key={$key}";
+        $this->parth  = "/actions/updateProfilePicture?key={$this->key}";
+        $this->method = "POST";
+        $this->body   = json_encode(["to" => $to, "url" => $url]);
+        return $this->request();
+    }
+
+
+    public function readReceipt($to, $MsgId)
+    {
+        $body = ["to" => $to, "idMsg" => $MsgId];
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/actions/readReceipt?key={$this->key}";
         $this->method = "POST";
         $this->body   = json_encode($body);
         return $this->request();
     }
 
-    public function readReceipt($key, $body)
-    {
-        // $body = ["to" => "string", "idMsg" => "string"] EXEMPLO 
-        array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/actions/readReceipt?key={$key}";
-        $this->method = "POST";
-        $this->body   = json_encode($body);
-        return $this->request();
-    }
 
-
-    public function downloadMediaMessage($key, $body)
+    public function downloadMediaMessage($body)
     {
         /* EXEMPLO BODY 
        $body = [
@@ -192,7 +194,7 @@ class WhatsApp
          ] 
          */
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/actions/downloadMediaMessage?key={$key}";
+        $this->parth  = "/actions/downloadMediaMessage?key={$this->key}";
         $this->method = "POST";
         $this->body   = json_encode($body);
         return $this->request();
@@ -202,68 +204,59 @@ class WhatsApp
 
     //SendMessage 
 
-    public function sendPresence($key, $body)
+    public function sendPresence($to, $status)
     {
-        /* EXEMPLO BODY
-                 unavailable | available | composing | recording | paused
-               $body= [
-                    "data" => [
-                        "to" => "556696852025", 
-                        "status" => "composing" 
-                    ] 
-                ]
-            */
+
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  =  "/message/setstatus?key={$key}";
+        $this->parth  =  "/message/setstatus?key={$this->key}";
         $this->method =  "POST";
-        $this->body   =  json_encode($body);
-        return $this->request();
-    }
-
-
-
-    public function sendText($key, $body)
-    {
-        /*
-        $body = [
-            "messageData" => [
-                  "to" => "556696852025", 
-                  "text" => "estou testando a API" 
-               ] 
-         ]
-         */
-        array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/message/text?key={$key}";
-        $this->method = "POST";
-        $this->body   =  json_encode($body);
-        return $this->request();
-    }
-
-
-    public function sendMedia($key, $body)
-    {
-        /*
-        EXEMPLO BODY
-        $body = [
+        $this->body   =  json_encode([
             "data" => [
-                "to" => "556696852025",
-                "url" => "https://blogvidanoegito.files.wordpress.com/2019/11/esfinge.jpg",
-                "type" => "image",
-                "ptt" => true,
-                "caption" => "EGITO",
-                "mimeType" => "image/jpeg"
+                "to" =>  $to,
+                "status" => $status
             ]
-        ]
-        */
-        array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/message/media?key={$key}";
-        $this->method = "POST";
-        $this->body   = json_encode($body);
+        ]);
         return $this->request();
     }
 
 
-    public function sendButton($key,  $body)
+
+    public function sendText($to, $text)
+    {
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/message/text?key={$this->key}";
+        $this->method = "POST";
+        $this->body   =  json_encode([
+            "messageData" => [
+                "to" => $to,
+                "text" => $text
+            ]
+        ]);
+        return $this->request();
+    }
+
+
+    public function sendMedia($to, $url, $type, $caption, $mimeType, $ptt = false)
+    {
+
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/message/media?key={$this->key}";
+        $this->method = "POST";
+        $this->body   = json_encode([
+            "data" => [
+                "to" =>  $to,
+                "url" =>  $url,
+                "type" => $type,
+                "ptt" => $ptt,
+                "caption" => $caption,
+                "mimeType" => $mimeType
+            ]
+        ]);
+        return $this->request();
+    }
+
+
+    public function sendButton($body)
     {
         /* EXEMPLO BODY 
         $body = [
@@ -285,13 +278,13 @@ class WhatsApp
         ];
         */
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/message/button?key={$key}";
+        $this->parth  = "/message/button?key={$this->key}";
         $this->method = "POST";
         $this->body   = json_encode($body);
         return $this->request();
     }
 
-    public function sendTemplateButtons($key, $body)
+    public function sendTemplateButtons($body)
     {
         /* EXEMPLO BODY  replyButton | urlButton | callButton
         $body = [
@@ -311,14 +304,14 @@ class WhatsApp
         */
 
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/message/templateButtons?key={$key}";
+        $this->parth  = "/message/templateButtons?key={$this->key}";
         $this->method = "POST";
         $this->body   = json_encode($body);
         return $this->request();
     }
 
 
-    public function sendList($key, $body)
+    public function sendList($body)
     {
         /* EXEMPLO BODY 
         $body = [
@@ -351,7 +344,7 @@ class WhatsApp
         */
 
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/message/list?key={$key}";
+        $this->parth  = "/message/list?key={$this->key}";
         $this->method = "POST";
         $this->body   = json_encode($body);
         return $this->request();
@@ -359,61 +352,56 @@ class WhatsApp
 
 
 
-    public function sendContact($key,  $body)
+    public function sendContact($to, $name, $number)
     {
-        /*
-        $body = [
-            "to" => "556696852025",
+
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/message/contact?key={$this->key}";
+        $this->method = "POST";
+        $this->body   = json_encode([
+            "to" => $to,
             "vcard" => [
-                "fullName" => "Raphael Serafim",
-                "displayName" => "Raphael Serafim",
-                "organization" => "CACHE SISTEMAS",
-                "phoneNumber" => "+556696852025"
+                "fullName" => $name,
+                "displayName" => $name,
+                "organization" =>  "",
+                "phoneNumber" => $number
             ]
-        ];
-        */
-        array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/message/contact?key={$key}";
-        $this->method = "POST";
-        $this->body   = json_encode($body);
+        ]);
         return $this->request();
     }
 
-    public function sendLocation($key,  $body)
+    public function sendLocation($to, $lat, $lon, $address)
     {
-        /* EXEMPLO BODY 
-      $body  = [
-        "data" => [
-                "to" => "string", 
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/message/location?key={$this->key}";
+        $this->method = "POST";
+        $this->body   = json_encode([
+            "data" => [
+                "to" => $to,
                 "location" => [
-                    "latitude" => 30.0595581, 
-                    "longitude" => 31.2234448, 
-                    "address" => "Cairo Egito" 
-                ] 
-            ] 
-        ] 
-        */
-        array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/message/location?key={$key}";
-        $this->method = "POST";
-        $this->body   = json_encode($body);
+                    "latitude" => $lat,
+                    "longitude" => $lon,
+                    "address" => $address
+                ]
+            ]
+        ]);
         return $this->request();
     }
 
-    
-    public function sendReaction($key,  $to, $text, $id)
+
+    public function sendReaction($to, $text, $MsgId)
     {
-        $body = [
+
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/message/reaction?key={$this->key}";
+        $this->method = "POST";
+        $this->body   = json_encode([
             "data" => [
                 "to" => $to,
                 "text" => $text,
-                "MsgId" => $id 
+                "MsgId" => $MsgId
             ]
-        ];
-        array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = "/message/reaction?key={$key}";
-        $this->method = "POST";
-        $this->body   = json_encode($body);
+        ]);
         return $this->request();
     }
 }
