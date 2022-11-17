@@ -240,14 +240,25 @@ class WhatsApp
     }
 
 
-
-
-    public function enviarMensagemLink($numero,    $texto,   $url)
+    public function sendMedia($key, $body)
     {
+        /*
+        EXEMPLO BODY
+         [
+            "data" => [
+                "to" => "556696852025",
+                "url" => "https://blogvidanoegito.files.wordpress.com/2019/11/esfinge.jpg",
+                "type" => "image",
+                "ptt" => true,
+                "caption" => "EGITO",
+                "mimeType" => "image/jpeg"
+            ]
+        ]
+        */
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/send/' . $this->key . '/link';
-        $this->method = 'POST';
-        $this->body   = json_encode(array('messageData' => array('to' => $numero,  'text' => $texto, 'url' => $url)));
+        $this->parth  = "/message/media?key={$key}";
+        $this->method = "POST";
+        $this->body   = json_encode($body);
         return $this->request();
     }
 
