@@ -168,7 +168,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function readReceipt($key, $body)  
+    public function readReceipt($key, $body)
     {
         // ["to" => "string", "idMsg" => "string"] EXEMPLO 
         array_push($this->header, 'Content-Type: application/json');
@@ -179,9 +179,9 @@ class WhatsApp
     }
 
 
-    public function downloadMediaMessage($key, $body)  
+    public function downloadMediaMessage($key, $body)
     {
-        /*
+        /* EXEMPLO BODY 
         [
             "messageKeys" => [
                 "mediaKey" => "string", 
@@ -189,7 +189,7 @@ class WhatsApp
                 "url" => "string", 
                 "messageType" => "string" 
             ] 
-         ]
+         ] 
          */
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/actions/downloadMediaMessage?key={$key}";
@@ -198,16 +198,24 @@ class WhatsApp
         return $this->request();
     }
 
-  
 
-   
 
-    public function simularPresenca($numero,    $presenca)
+    //SendMessage 
+
+    public function sendPresence($key,    $body)
     {
+            /* EXEMPLO BODY
+                [
+                    "data" => [
+                        "to" => "string", 
+                        "status" => "string" 
+                    ] 
+                ]
+            */
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/actions/' . $this->key . '/simularPresenca';
-        $this->method = 'POST';
-        $this->body   = json_encode(array('number' => $numero, 'presenca' => $presenca));
+        $this->parth  =  "/message/setstatus?key={$key}";
+        $this->method =  "POST";
+        $this->body   =  json_encode($body);
         return $this->request();
     }
 
