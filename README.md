@@ -120,34 +120,13 @@ echo $whasapp->sendText($to, $text);
 ```
 
 ###  send Media 
-```php
-/*
-This endpoint allows you to send a media URL to a user.
-<br>
-The url parameter is the URL of the media to be loaded.
-<br>
-The to parameter is the phone number of the user to send the media to.
-<br>
-The type parameter is the type of media to be sent.
-<br>
-The media type can be one of the following:
-<br>
-<b>image</b> - an image
-<b>video</b> - a video
-<b>audio</b> - a audio  use ppt=true for recorded audio
-<b>document</b> - a document
-<br>
-The caption parameter is the caption of the media to be sent.
-The mimeType parameter is the mimeType of the media. See the mimeType list.
-*/
-``` 
 
  ```php 
 $to         = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
 $url        = '';
-$type       = '';
+$type       = 'image'; //  image |  video | audio | document
 $caption    = 'Hi';  
-$mimeType   = '';
+$mimeType   = 'image/jpge';    <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types" target="_blank">MimeType list</a>  
 $ptt        = false; // if it's audio 
 echo $whasapp->sendMedia($to, $url, $type, $caption, $mimeType, $ptt);
 ```
