@@ -379,5 +379,27 @@ class WhatsApp
         return $this->request();
     }
 
+    public function sendLocation($key,  $body)
+    {
+      /* EXEMPLO BODY 
+      $body  = [
+        "data" => [
+                "to" => "string", 
+                "location" => [
+                    "latitude" => 30.0595581, 
+                    "longitude" => 31.2234448, 
+                    "address" => "Cairo Egito" 
+                ] 
+            ] 
+        ] 
+        */
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/message/location?key={$key}";
+        $this->method = "POST";
+        $this->body   = json_encode($body);
+        return $this->request();
+    }
+   
+
  
 }
