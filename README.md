@@ -79,7 +79,7 @@ echo $whasapp->updateProfileName('Raphael Serafim');
  ### Update Profile And Group  Picture
 ```php
 $url =''; // url image 
-$id  ='556696852025'; // 123456789@g.us || 556696852025 
+$id  ='556696852025'; // if it's a group, use full id ex: 123456789@g.us 
 echo $whasapp->updateProfilePicture($id, $url);
 ```
  
