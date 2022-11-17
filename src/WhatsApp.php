@@ -163,11 +163,44 @@ class WhatsApp
         // ["to" => "string", "url" => "string"] EXEMPLO 
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/actions/updateProfilePicture?key={$key}";
-        $this->method = 'POST';
+        $this->method = "POST";
         $this->body   = json_encode($body);
         return $this->request();
     }
 
+    public function readReceipt($key, $body)  
+    {
+        // ["to" => "string", "idMsg" => "string"] EXEMPLO 
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/actions/readReceipt?key={$key}";
+        $this->method = "POST";
+        $this->body   = json_encode($body);
+        return $this->request();
+    }
+
+
+    public function downloadMediaMessage($key, $body)  
+    {
+        /*
+        [
+            "messageKeys" => [
+                "mediaKey" => "string", 
+                "directPath" => "string", 
+                "url" => "string", 
+                "messageType" => "string" 
+            ] 
+         ]
+         */
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/actions/downloadMediaMessage?key={$key}";
+        $this->method = "POST";
+        $this->body   = json_encode($body);
+        return $this->request();
+    }
+
+  
+
+   
 
     public function simularPresenca($numero,    $presenca)
     {
