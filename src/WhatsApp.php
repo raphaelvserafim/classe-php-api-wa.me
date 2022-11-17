@@ -3,20 +3,19 @@
 namespace Cachesistemas\ClassePhpApiWame;
 
 
-class WhatsApp
+class WhatsApp  
 {
-
-
     private $key;
     private $server;
     private $header = array();
     private $parth;
     private $method;
     private $body;
+
     public function __construct(array $dados)
     {
 
-        $this->server = $dados["server"];
+        $this->server =  $dados["server"];
         $this->key    =  $dados["key"];
     }
 
@@ -38,6 +37,28 @@ class WhatsApp
         curl_close($ch);
         return $result;
     }
+
+
+    // ManagerInstance // 
+    public function ListAllInstance($admin_key){
+		$this->parth  = '/instance/list?admin_key=' . $admin_key;
+        $this->method = 'GET';
+        return $this->request();
+	}
+
+	public function Create($admin_key){
+		$this->parth  = '/instance/create?key='.$this->key.'&admin_key=' . $admin_key;
+        $this->method = 'POST';
+        $this->body   = json_encode([
+          "allowWebhook" => true, 
+          "webhookMessage" => "", 
+          "webhookGroup" => "", 
+          "webhookConnection" => "", 
+          "webhookQrCode" => "" 
+        ]);
+   
+        return $this->request();
+	}
 
 
 
