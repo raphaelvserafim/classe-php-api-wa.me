@@ -318,24 +318,42 @@ class WhatsApp
     }
 
 
-    public function enviarMensagemLista($numero,   $nomeLista,   $nomeBtn,    $texto,   $rodape,   $sections)
+    public function sendList($key, $body)
     {
+        /* EXEMPLO BODY 
+        $jayParsedAry = [
+            "messageData" => [
+                "to" => "556696852025",
+                "buttonText" => "Menu",
+                "text" => "Esse nosso menu",
+                "title" => "Menu",
+                "description" => "veja nosso menu",
+                "sections" => [
+                    [
+                        "title" => "Menu 01",
+                        "rows" => [
+                            [
+                                "title" => "Opção 01",
+                                "description" => "essa é uma opção",
+                                "rowId" => "1"
+                            ],
+                            [
+                                "title" => "Opção 02",
+                                "description" => "essa é outra opção",
+                                "rowId" => "2"
+                            ]
+                        ]
+                    ]
+                ],
+                "listType" => 0
+            ]
+        ];
+        */
+
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/send/' . $this->key . '/botoesLista';
-        $this->method = 'POST';
-        $this->body   = json_encode(
-            array(
-                'messageData' =>  array(
-                    'to' => $numero,
-                    'buttonText' => $nomeBtn,
-                    'text' =>  $texto,
-                    'title' => $nomeLista,
-                    'description' => $rodape,
-                    'sections' => $sections,
-                    'listType' => 0,
-                )
-            )
-        );
+        $this->parth  = "/message/list?key={$key}";
+        $this->method = "POST";
+        $this->body   = json_encode($body);
         return $this->request();
     }
 
