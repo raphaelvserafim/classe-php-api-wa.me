@@ -76,10 +76,39 @@ echo $whasapp->profilePic('556696852025');
 echo $whasapp->updateProfileName('Raphael Serafim');
 ```
  
- ### Update Profile And Group  Picture
+### Update Profile And Group  Picture
 ```php
 $url =''; // url image 
 $id  ='556696852025'; // if it's a group, use full id ex: 123456789@g.us 
 echo $whasapp->updateProfilePicture($id, $url);
 ```
- 
+
+### Read Receipt
+```php
+$MsgId ='';  
+$to  ='556696852025'; // if it's a group, use full id ex: 123456789@g.us 
+echo $whasapp->readReceipt($to, $MsgId);
+```
+
+### Download Media  
+```php
+  $body = [
+    "messageKeys" => [
+        "mediaKey" => "", 
+        "directPath" => "", 
+        "url" => "", 
+        "messageType" => "" 
+    ] 
+  ];
+echo $whasapp->downloadMediaMessage($body);
+```
+
+## Send Message
+  #### if it's a group, use full id ex: 123456789@g.us 
+
+### send Presence
+ ```php
+ $to     = '556696852025'; 
+ $status = 'composing';   // unavailable | available | composing | recording | paused
+echo $whasapp->sendPresence($to, $status);
+```
