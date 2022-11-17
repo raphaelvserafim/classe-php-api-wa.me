@@ -107,16 +107,7 @@ class WhatsApp
 
     public function updateWebhook($body)
     {
-        /* EXEMPLO 
-        $body = [
-        "allowWebhook" => true, 
-        "webhookMessage" => "", 
-        "webhookGroup" => "", 
-        "webhookConnection" => "", 
-        "webhookQrCode" => "" 
-        ]; 
-        */
-
+       
         array_push($this->header, 'Content-Type: application/json');
         $this->parth    = "/instance/updateWebhook?key={$this->key}";
         $this->method   = "POST";
@@ -160,7 +151,7 @@ class WhatsApp
     }
 
 
-    public function updateProfilePicture($to, $url) // AND GROUP
+    public function updateProfilePicture($to, $url) 
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/actions/updateProfilePicture?key={$this->key}";

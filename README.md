@@ -21,12 +21,9 @@ composer require cachesistemas/classephpapiwame
 ### EXAMPLES
 
 
-
-
-#####  WHATSAPP   
-
+#####  WHATSAPP
 ```php
- 
+
 use Cachesistemas\ClassePhpApiWame\WhatsApp;
 
 include_once 'vendor/autoload.php';
@@ -36,9 +33,53 @@ $whasapp     = new WhatsApp(["server" => "API server", "key" => "Your Key Instan
 ```
 
 #### Get QrCode HTML
-
 ```php
 echo $whasapp->getQrCodeHTML();
 ```
 
+#### Get QrCode Base64
+```php
+echo $whasapp->getQrCodeBase64();
+```
+
+#### Infor Instance
+```php
+echo $whasapp->inforInstance();
+```
+
+#### Update Webhook
+```php
+$body = ["allowWebhook" => false,"webhookMessage" => "","webhookGroup" => "","webhookConnection" => "","webhookQrCode" => ""];
+        
+echo $whasapp->updateWebhook($body);
+```
+
+#### Logout
+```php
+echo $whasapp->logout();
+```
+ 
+## Actions
+
+### Get List Contacts
+```php
+echo $whasapp->listContacts();
+```
+
+### Get Profile  Pic
+```php
+echo $whasapp->profilePic('556696852025');
+```
+
+### Update Profile Name
+```php
+echo $whasapp->updateProfileName('Raphael Serafim');
+```
+ 
+ ### Update Profile And Group  Picture
+```php
+$url =''; // url image 
+$id  ='556696852025'; // 123456789@g.us || 556696852025 
+echo $whasapp->updateProfilePicture($id, $url);
+```
  
