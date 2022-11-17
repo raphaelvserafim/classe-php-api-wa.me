@@ -146,6 +146,14 @@ class WhatsApp
         return $this->request();
     }
 
+    public function updateProfileName($key, $name){
+      
+        $this->parth  = "/actions/updateProfileName?key={$key}";
+        $this->method = "POST";
+        $this->body = json_encode(["name" => $name ]);
+        return $this->request();
+    }
+
 
 
     public function validarNumero($numero)
