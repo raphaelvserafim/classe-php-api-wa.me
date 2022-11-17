@@ -205,10 +205,11 @@ class WhatsApp
     public function sendPresence($key,    $body)
     {
             /* EXEMPLO BODY
+                 unavailable | available | composing | recording | paused
                 [
                     "data" => [
-                        "to" => "string", 
-                        "status" => "string" 
+                        "to" => "556696852025", 
+                        "status" => "composing" 
                     ] 
                 ]
             */
