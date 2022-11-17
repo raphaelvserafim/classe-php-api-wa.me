@@ -120,7 +120,8 @@ echo $whasapp->sendText($to, $text);
 ```
 
 ###  send Media 
-```html
+```php
+/*
 This endpoint allows you to send a media URL to a user.
 <br>
 The url parameter is the URL of the media to be loaded.
@@ -138,6 +139,7 @@ The media type can be one of the following:
 <br>
 The caption parameter is the caption of the media to be sent.
 The mimeType parameter is the mimeType of the media. See the mimeType list.
+*/
 ``` 
 
  ```php 
