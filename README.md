@@ -104,11 +104,44 @@ echo $whasapp->downloadMediaMessage($body);
 ```
 
 ## Send Message
-  #### if it's a group, use full id ex: 123456789@g.us 
 
 ### send Presence
  ```php
- $to     = '556696852025'; 
+ $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
  $status = 'composing';   // unavailable | available | composing | recording | paused
 echo $whasapp->sendPresence($to, $status);
 ```
+
+### send Text
+ ```php
+ $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
+ $text   = 'Hi';   
+echo $whasapp->sendText($to, $text);
+```
+
+###  send Media 
+#### 
+``This endpoint allows you to send a media URL to a user.
+The url parameter is the URL of the media to be loaded.
+The to parameter is the phone number of the user to send the media to.
+The type parameter is the type of media to be sent.
+The media type can be one of the following:
+image - an image
+video - a video
+audio - an audio, use ppt=true for recorded audio
+document - a document
+The caption parameter is the caption of the media to be sent.
+The mimeType parameter is the mimeType of the media. See the mimeType list.
+`` 
+
+ ```php 
+$to         = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
+$url        = '';
+$type       = '';
+$caption    = 'Hi';  
+$mimeType   = '';
+$ptt        = false; // if it's audio 
+echo $whasapp->sendMedia($to, $url, $type, $caption, $mimeType, $ptt);
+```
+ 
+ 
