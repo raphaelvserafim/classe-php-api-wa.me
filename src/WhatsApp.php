@@ -160,7 +160,7 @@ class WhatsApp
 
     public function updateProfilePicture($key, $body) // AND GROUP
     {
-        // ["to" => "string", "url" => "string"] EXEMPLO 
+        // $body = ["to" => "string", "url" => "string"] EXEMPLO 
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/actions/updateProfilePicture?key={$key}";
         $this->method = "POST";
@@ -170,7 +170,7 @@ class WhatsApp
 
     public function readReceipt($key, $body)
     {
-        // ["to" => "string", "idMsg" => "string"] EXEMPLO 
+        // $body = ["to" => "string", "idMsg" => "string"] EXEMPLO 
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/actions/readReceipt?key={$key}";
         $this->method = "POST";
@@ -182,7 +182,7 @@ class WhatsApp
     public function downloadMediaMessage($key, $body)
     {
         /* EXEMPLO BODY 
-        [
+       $body = [
             "messageKeys" => [
                 "mediaKey" => "string", 
                 "directPath" => "string", 
@@ -206,7 +206,7 @@ class WhatsApp
     {
         /* EXEMPLO BODY
                  unavailable | available | composing | recording | paused
-                [
+               $body= [
                     "data" => [
                         "to" => "556696852025", 
                         "status" => "composing" 
@@ -225,7 +225,7 @@ class WhatsApp
     public function sendText($key, $body)
     {
         /*
-         [
+        $body = [
             "messageData" => [
                   "to" => "556696852025", 
                   "text" => "estou testando a API" 
@@ -244,7 +244,7 @@ class WhatsApp
     {
         /*
         EXEMPLO BODY
-         [
+        $body = [
             "data" => [
                 "to" => "556696852025",
                 "url" => "https://blogvidanoegito.files.wordpress.com/2019/11/esfinge.jpg",
@@ -266,7 +266,7 @@ class WhatsApp
     public function sendButton($key,  $body)
     {
         /* EXEMPLO BODY 
-        $jayParsedAry = [
+        $body = [
             "to" => "556696852025",
             "data" => [
                 "text" => "Recebeu ?",
@@ -294,7 +294,7 @@ class WhatsApp
     public function sendTemplateButtons($key, $body)
     {
         /* EXEMPLO BODY  replyButton | urlButton | callButton
-        $jayParsedAry = [
+        $body = [
             "to" => "556696852025",
             "data" => [
                 "text" => "Finalizar a compra",
@@ -321,7 +321,7 @@ class WhatsApp
     public function sendList($key, $body)
     {
         /* EXEMPLO BODY 
-        $jayParsedAry = [
+        $body = [
             "messageData" => [
                 "to" => "556696852025",
                 "buttonText" => "Menu",
@@ -358,22 +358,24 @@ class WhatsApp
     }
 
 
-    public function enviarLocalizacao($numero,    $latitude,   $longitude)
-    {
-        array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/send/' . $this->key . '/localizacao';
-        $this->method = 'POST';
-        $this->body   = json_encode(array('messageData' => array('numero_whatsapp' => $numero, 'coordenadas' => array('latitude' => $latitude, 'longitude' => $longitude))));
-        return $this->request();
-    }
 
-    public function enviarContato($numero,    $nome,   $phoneNumber)
+    public function sendContact($key,  $body)
     {
+        /*
+        $body = [
+            "to" => "556696852025",
+            "vcard" => [
+                "fullName" => "Raphael Serafim",
+                "displayName" => "Raphael Serafim",
+                "organization" => "CACHE SISTEMAS",
+                "phoneNumber" => "+556696852025"
+            ]
+        ];
+        */
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/send/' . $this->key . '/contato';
-        $this->method = 'POST';
-        $this->body   = json_encode(array('messageData' => array('to' => $numero, 'vcard' => array('fullName' => $nome, 'displayName' => $nome, 'organization' => '', 'phoneNumber' => $phoneNumber))));
-
+        $this->parth  = "/message/contact?key={$key}";
+        $this->method = "POST";
+        $this->body   = json_encode($body);
         return $this->request();
     }
 
