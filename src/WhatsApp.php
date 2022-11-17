@@ -262,22 +262,32 @@ class WhatsApp
         return $this->request();
     }
 
-    public function enviarMensagemMidia($numero,    $url,   $type,   $caption,   $mimeType,   $nameFile)
-    {
-        array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/send/' . $this->key . '/midia';
-        $this->method = 'POST';
-        $this->body   = json_encode(array('messageData' => array('to' => $numero, 'url' => $url, 'type'    => $type,  'caption' => $caption,  'mimeType' => $mimeType, 'nameFile' => $nameFile)));
-        return $this->request();
-    }
 
-
-    public function enviarMensagemBotoes($numero,   $texto,   $rodape,   $botoes)
+    public function sendButton($key,  $body)
     {
+        /* EXEMPLO BODY 
+        $jayParsedAry = [
+            "to" => "556696852025",
+            "data" => [
+                "text" => "Recebeu ?",
+                "buttons" => [
+                    [
+                        "title" => "Sim",
+                        "id" => "1"
+                    ],
+                    [
+                        "title" => "Não",
+                        "id" => "2"
+                    ]
+                ],
+                "footerText" => "Escolha uma opção"
+            ]
+        ];
+        */
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/send/' . $this->key . '/botoes';
-        $this->method = 'POST';
-        $this->body   = json_encode(array('messageData' => array('to' => $numero, 'text' => $texto, 'buttons' => $botoes,  'footerText' => $rodape)));
+        $this->parth  = "/message/button?key={$key}";
+        $this->method = "POST";
+        $this->body   = json_encode($body);
         return $this->request();
     }
 
