@@ -399,7 +399,28 @@ class WhatsApp
         $this->body   = json_encode($body);
         return $this->request();
     }
+
+    public function sendReaction($key,  $body)
+    {
+      /* EXEMPLO BODY 
+     
+        $body = [
+        "data" => [
+                "to" => "556696852025", 
+                "text" => "😍", 
+                "MsgId" => "string" 
+            ] 
+        ]; 
+        */
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/message/reaction?key={$key}";
+        $this->method = "POST";
+        $this->body   = json_encode($body);
+        return $this->request();
+    }
    
+
+ 
 
  
 }
