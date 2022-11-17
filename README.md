@@ -205,3 +205,29 @@ echo $whasapp->sendTemplateButtons($body);
     ];
 echo $whasapp->sendList($body);
 ```
+
+
+### send Contact
+ ```php
+ $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
+ $name   = 'CACHE SISTEMAS';   
+ $number = '+556696883327';
+echo $whasapp->sendContact($to, $name, $number);
+```
+
+### send Location
+ ```php
+ $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
+ $lat    = 35.000;   
+ $lon    = 20.000;
+ $address = 'Rua do fulando';
+echo $whasapp->sendLocation($to, $lat, $lon, $address);
+```
+
+### send Location
+ ```php
+ $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
+ $text   =  '😘';   
+ $MsgId  =  '';
+echo $whasapp->sendReaction($to, $text, $MsgId);
+```
