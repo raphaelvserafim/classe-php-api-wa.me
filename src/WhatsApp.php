@@ -202,9 +202,9 @@ class WhatsApp
 
     //SendMessage 
 
-    public function sendPresence($key,    $body)
+    public function sendPresence($key, $body)
     {
-            /* EXEMPLO BODY
+        /* EXEMPLO BODY
                  unavailable | available | composing | recording | paused
                 [
                     "data" => [
@@ -222,14 +222,25 @@ class WhatsApp
 
 
 
-    public function enviarMensagemTexto($numero,    $texto)
+    public function sendText($key, $body)
     {
+        /*
+         [
+            "messageData" => [
+                  "to" => "556696852025", 
+                  "text" => "estou testando a API" 
+               ] 
+         ]
+         */
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/send/' . $this->key . '/texto';
-        $this->method = 'POST';
-        $this->body   = json_encode(array('messageData' => array('to' => $numero,  'text' => $texto)));
+        $this->parth  = "/message/text?key={$key}";
+        $this->method = "POST";
+        $this->body   =  json_encode($body);
         return $this->request();
     }
+
+
+
 
     public function enviarMensagemLink($numero,    $texto,   $url)
     {
