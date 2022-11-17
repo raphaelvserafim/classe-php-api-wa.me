@@ -139,29 +139,32 @@ class WhatsApp
         return $this->request();
     }
 
-    public function profilePic($key, $to){
-      
+    public function profilePic($key, $to)
+    {
+
         $this->parth  = "/actions/getPicture?key={$key}&to={$to}";
         $this->method = "GET";
         return $this->request();
     }
 
-    public function updateProfileName($key, $name){
-      
+
+    public function updateProfileName($key, $name)
+    {
+        array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/actions/updateProfileName?key={$key}";
         $this->method = "POST";
-        $this->body = json_encode(["name" => $name ]);
+        $this->body = json_encode(["name" => $name]);
         return $this->request();
     }
 
 
-
-    public function validarNumero($numero)
+    public function updateProfilePicture($key, $body) // AND GROUP
     {
+        // ["to" => "string", "url" => "string"] EXEMPLO 
         array_push($this->header, 'Content-Type: application/json');
-        $this->parth  = '/rest/consultas/' . $this->key . '/numeroValido';
+        $this->parth  = "/actions/updateProfilePicture?key={$key}";
         $this->method = 'POST';
-        $this->body   = json_encode(array('number' => $numero));
+        $this->body   = json_encode($body);
         return $this->request();
     }
 
