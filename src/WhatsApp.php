@@ -291,6 +291,32 @@ class WhatsApp
         return $this->request();
     }
 
+    public function sendTemplateButtons($key, $body)
+    {
+        /* EXEMPLO BODY 
+        $jayParsedAry = [
+            "to" => "556696852025",
+            "data" => [
+                "text" => "Finalizar a compra",
+                "buttons" => [
+                    [
+                        "type" => "urlButton",
+                        "title" => "Pagar",
+                        "payload" => "https://api-wa.me"
+                    ]
+                ],
+                "footerText" => "Visite o site para finalizar"
+            ]
+        ];
+        */
+
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/message/templateButtons?key={$key}";
+        $this->method = "POST";
+        $this->body   = json_encode($body);
+        return $this->request();
+    }
+
 
     public function enviarMensagemLista($numero,   $nomeLista,   $nomeBtn,    $texto,   $rodape,   $sections)
     {
