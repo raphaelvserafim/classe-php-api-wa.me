@@ -120,13 +120,14 @@ echo $whasapp->sendText($to, $text);
 ```
 
 ###  send Media 
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types" target="_blank">MimeType list</a>  
 
  ```php 
 $to         = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
 $url        = '';
 $type       = 'image'; //  image |  video | audio | document
 $caption    = 'Hi';  
-$mimeType   = 'image/jpge';    <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types" target="_blank">MimeType list</a>  
+$mimeType   = 'image/jpge';    
 $ptt        = false; // if it's audio 
 echo $whasapp->sendMedia($to, $url, $type, $caption, $mimeType, $ptt);
 ```
