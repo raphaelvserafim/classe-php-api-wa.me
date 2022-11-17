@@ -293,7 +293,7 @@ class WhatsApp
 
     public function sendTemplateButtons($key, $body)
     {
-        /* EXEMPLO BODY 
+        /* EXEMPLO BODY  replyButton | urlButton | callButton
         $jayParsedAry = [
             "to" => "556696852025",
             "data" => [
