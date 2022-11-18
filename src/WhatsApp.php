@@ -91,7 +91,7 @@ class WhatsApp
 
     public function getQrCodeBase64()
     {
-        $this->parth  = "/instance/qrcode_base64={$this->key}";
+        $this->parth  = "/instance/qrcode_base64?key={$this->key}";
         $this->method = "GET";
         return $this->request();
     }
