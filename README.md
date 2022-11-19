@@ -1,4 +1,4 @@
-# WhatsApp API PHP api-wa.me  
+# WhatsApp API - PHP
 
 ##### Gerar Instância Key:
  
