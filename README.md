@@ -6,8 +6,8 @@ Acessar: <a href="https://api-wa.me">api-wa.me</a>
 
 <a href="https://server.api-wa.me/docs/">Swagger</a>
 
-#####  Contact:
-<a href="https://wa.me/5566996852025"> 
+#####  Group:
+<a href="https://chat.whatsapp.com/EGaVNCyiRX21A5OWdlhOQw"> 
 <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" /> 
 </a>
 
