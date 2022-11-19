@@ -224,10 +224,10 @@ echo $whasapp->sendContact($to, $name, $number);
 echo $whasapp->sendLocation($to, $lat, $lon, $address);
 ```
 
-### send Location
+### send Reaction
  ```php
  $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
  $text   =  '😘';   
- $MsgId  =  '';
-echo $whasapp->sendReaction($to, $text, $MsgId);
+ $msgId  =  '';
+echo $whasapp->sendReaction($to, $text, $msgId);
 ```
