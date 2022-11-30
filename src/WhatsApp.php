@@ -419,4 +419,27 @@ class WhatsApp
         $this->method = "POST";
         return $this->request();
     }
+
+
+    public function removeParticipantsGroup($group_id, $participants)
+    {
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/group/removeParticipants?key={$this->key}";
+        $this->method = "DELETE";
+        $this->body   = json_encode([
+            "group_data" => [
+                "group_id" => $group_id,
+                "participants" => $participants
+            ]
+        ]);
+        return $this->request();
+    }
+
+    public function leaveGroupp($group_id)
+    {
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/group/leaveGroup?key={$this->key}&group_id={$group_id}";
+        $this->method = "DELETE";
+        return $this->request();
+    }
 }
