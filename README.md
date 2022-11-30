@@ -253,4 +253,9 @@ echo $whasapp->sendReaction($to, $text, $msgId);
    echo $whasapp->groupInviteCode($group_id);
 ```
 
- 
+ ### create Group
+```php 
+   $name = 'API PHP WhatsApp'; 
+   $participants = ['556696852025'];
+   echo $whasapp->createGroup($name, $participants)
+```
