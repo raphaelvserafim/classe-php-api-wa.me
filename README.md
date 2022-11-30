@@ -296,3 +296,10 @@ echo $whasapp->sendReaction($to, $text, $msgId);
    // true = Admin; false= All 
    echo $whasapp->setWhoCanChangeSettingsGroup($group_id, true)
 ```
+
+ ### Remove Participants Group  
+```php 
+   $group_id     = '123456789@g.us'; 
+   $participants = ['556696852025'];
+   echo $whasapp->removeParticipantsGroup($group_id, $participants)
+```
