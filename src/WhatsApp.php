@@ -403,4 +403,20 @@ class WhatsApp
         ]);
         return $this->request();
     }
+
+    public function setWhoCanSendMessageGroup($group_id,   $allow)
+    {
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/group/setWhoCanSendMessage?key={$this->key}&group_id={$group_id}&allowOnlyAdmins=" . $allow;
+        $this->method = "POST";
+        return $this->request();
+    }
+
+    public function setWhoCanChangeSettingsGroup($group_id,   $allow)
+    {
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/group/setWhoCanChangeSettings?key={$this->key}&group_id={$group_id}&allowOnlyAdmins=" . $allow;
+        $this->method = "POST";
+        return $this->request();
+    }
 }
