@@ -282,3 +282,11 @@ echo $whasapp->sendReaction($to, $text, $msgId);
    $participants = ['556696852025'];
    echo $whasapp->demoteParticipantsGroup($group_id, $participants)
 ```
+
+ ### Set Who Can Send Message Group  
+```php 
+   $group_id     = '123456789@g.us'; 
+   // true = Admin; false= All 
+   echo $whasapp->setWhoCanSendMessageGroup($group_id, true)
+```
+
