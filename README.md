@@ -257,7 +257,7 @@ echo $whasapp->sendReaction($to, $text, $msgId);
 ```php 
    $name = 'API PHP WhatsApp'; 
    $participants = ['556696852025'];
-   echo $whasapp->createGroup($name, $participants)
+   echo $whasapp->createGroup($name, $participants);
 ```
 
 
@@ -265,7 +265,7 @@ echo $whasapp->sendReaction($to, $text, $msgId);
 ```php 
    $group_id     = '123456789@g.us'; 
    $participants = ['556696852025'];
-   echo $whasapp->addParticipantsGroup($group_id, $participants)
+   echo $whasapp->addParticipantsGroup($group_id, $participants);
 ```
 
 
@@ -273,33 +273,42 @@ echo $whasapp->sendReaction($to, $text, $msgId);
 ```php 
    $group_id     = '123456789@g.us'; 
    $participants = ['556696852025'];
-   echo $whasapp->promoteParticipantsGroup($group_id, $participants)
+   echo $whasapp->promoteParticipantsGroup($group_id, $participants);
 ```
 
  ### Demote Participants Group   
 ```php 
    $group_id     = '123456789@g.us'; 
    $participants = ['556696852025'];
-   echo $whasapp->demoteParticipantsGroup($group_id, $participants)
+   echo $whasapp->demoteParticipantsGroup($group_id, $participants);
 ```
 
  ### Set Who Can Send Message Group  
 ```php 
    $group_id     = '123456789@g.us'; 
    // true = Admin; false= All 
-   echo $whasapp->setWhoCanSendMessageGroup($group_id, true)
+   echo $whasapp->setWhoCanSendMessageGroup($group_id, true);
 ```
 
  ### Set Who Can Change Settings Group
 ```php 
    $group_id     = '123456789@g.us'; 
    // true = Admin; false= All 
-   echo $whasapp->setWhoCanChangeSettingsGroup($group_id, true)
+   echo $whasapp->setWhoCanChangeSettingsGroup($group_id, true);
 ```
 
  ### Remove Participants Group  
 ```php 
    $group_id     = '123456789@g.us'; 
    $participants = ['556696852025'];
-   echo $whasapp->removeParticipantsGroup($group_id, $participants)
+   echo $whasapp->removeParticipantsGroup($group_id, $participants);
 ```
+
+ ### Leave Group
+```php 
+   $group_id     = '123456789@g.us'; 
+   $participants = ['556696852025'];
+   echo $whasapp->leaveGroup($group_id);
+```
+
+ 
