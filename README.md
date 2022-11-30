@@ -231,3 +231,13 @@ echo $whasapp->sendLocation($to, $lat, $lon, $address);
  $msgId  =  '';
 echo $whasapp->sendReaction($to, $text, $msgId);
 ```
+
+
+## Group
+
+### Get list Group
+```php 
+   echo $whasapp->listGroup();
+```
+
+ 
