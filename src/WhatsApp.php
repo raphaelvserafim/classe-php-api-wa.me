@@ -435,7 +435,7 @@ class WhatsApp
         return $this->request();
     }
 
-    public function leaveGroupp($group_id)
+    public function leaveGroup($group_id)
     {
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/group/leaveGroup?key={$this->key}&group_id={$group_id}";
