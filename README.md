@@ -290,3 +290,9 @@ echo $whasapp->sendReaction($to, $text, $msgId);
    echo $whasapp->setWhoCanSendMessageGroup($group_id, true)
 ```
 
+ ### Set Who Can Change Settings Group
+```php 
+   $group_id     = '123456789@g.us'; 
+   // true = Admin; false= All 
+   echo $whasapp->setWhoCanChangeSettingsGroup($group_id, true)
+```
