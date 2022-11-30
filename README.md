@@ -275,3 +275,10 @@ echo $whasapp->sendReaction($to, $text, $msgId);
    $participants = ['556696852025'];
    echo $whasapp->promoteParticipantsGroup($group_id, $participants)
 ```
+
+ ### Demote Participants Group   
+```php 
+   $group_id     = '123456789@g.us'; 
+   $participants = ['556696852025'];
+   echo $whasapp->demoteParticipantsGroup($group_id, $participants)
+```
