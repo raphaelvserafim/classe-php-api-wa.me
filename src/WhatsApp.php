@@ -239,7 +239,7 @@ class WhatsApp
 
     public function sendButton($body)
     {
-         
+
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/message/button?key={$this->key}";
         $this->method = "POST";
@@ -249,7 +249,7 @@ class WhatsApp
 
     public function sendTemplateButtons($body)
     {
-        
+
         array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/message/templateButtons?key={$this->key}";
         $this->method = "POST";
@@ -317,6 +317,88 @@ class WhatsApp
                 "to" => $to,
                 "text" => $text,
                 "MsgId" => $MsgId
+            ]
+        ]);
+        return $this->request();
+    }
+
+
+
+    // Group 
+
+    public function listGroup()
+    {
+        $this->parth  = "/group/list?key={$this->key}";
+        $this->method = "GET";
+        return $this->request();
+    }
+
+    public function inforGroup($group_id)
+    {
+        $this->parth  = "/group/infor?key={$this->key}&group_id={$group_id}";
+        $this->method = "GET";
+        return $this->request();
+    }
+
+    public function  groupInviteCode($group_id)
+    {
+        $this->parth  = "/group/groupInviteCode?key={$this->key}&group_id={$group_id}";
+        $this->method = "GET";
+        return $this->request();
+    }
+
+
+    public function createGroup($name, $participants)
+    {
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/group/create?key={$this->key}";
+        $this->method = "POST";
+        $this->body   = json_encode([
+            "group_data" => [
+                "group_name" => $name,
+                "participants" => $participants
+            ]
+        ]);
+        return $this->request();
+    }
+
+    public function addParticipantsGroup($group_id, $participants)
+    {
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/group/addParticipants?key={$this->key}";
+        $this->method = "POST";
+        $this->body   = json_encode([
+            "group_data" => [
+                "group_id" => $group_id,
+                "participants" => $participants
+            ]
+        ]);
+        return $this->request();
+    }
+
+    public function promoteParticipantsGroup($group_id, $participants)
+    {
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/group/promoteParticipants?key={$this->key}";
+        $this->method = "POST";
+        $this->body   = json_encode([
+            "group_data" => [
+                "group_id" => $group_id,
+                "participants" => $participants
+            ]
+        ]);
+        return $this->request();
+    }
+
+    public function demoteParticipantsGroup($group_id, $participants)
+    {
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/group/demoteParticipants?key={$this->key}";
+        $this->method = "POST";
+        $this->body   = json_encode([
+            "group_data" => [
+                "group_id" => $group_id,
+                "participants" => $participants
             ]
         ]);
         return $this->request();
