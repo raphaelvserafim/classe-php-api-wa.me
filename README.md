@@ -267,3 +267,11 @@ echo $whasapp->sendReaction($to, $text, $msgId);
    $participants = ['556696852025'];
    echo $whasapp->addParticipantsGroup($group_id, $participants)
 ```
+
+
+ ### Promote Participants Group Admin 
+```php 
+   $group_id     = '123456789@g.us'; 
+   $participants = ['556696852025'];
+   echo $whasapp->promoteParticipantsGroup($group_id, $participants)
+```
