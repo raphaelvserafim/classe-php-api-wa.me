@@ -307,7 +307,6 @@ echo $whasapp->sendReaction($to, $text, $msgId);
  ### Leave Group
 ```php 
    $group_id     = '123456789@g.us'; 
-   $participants = ['556696852025'];
    echo $whasapp->leaveGroup($group_id);
 ```
 
