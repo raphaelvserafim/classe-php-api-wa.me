@@ -240,4 +240,10 @@ echo $whasapp->sendReaction($to, $text, $msgId);
    echo $whasapp->listGroup();
 ```
 
+### Get infor Group
+```php 
+   $group_id = '123456789@g.us'; 
+   echo $whasapp->inforGroup($group_id);
+```
+
  
