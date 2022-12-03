@@ -216,6 +216,20 @@ class WhatsApp
         return $this->request();
     }
 
+    public function sendAudio($to, $url, $ptt = true)
+    {
+        array_push($this->header, 'Content-Type: application/json');
+        $this->parth  = "/message/audio?key={$this->key}&ptt={$ptt}";
+        $this->method = "POST";
+        $this->body   =  json_encode([
+            "messageData" => [
+                "to" => $to,
+                "url" => $url
+            ]
+        ]);
+        return $this->request();
+    }
+
 
     public function sendMedia($to, $url, $type, $caption, $mimeType = '', $ptt = false)
     {
