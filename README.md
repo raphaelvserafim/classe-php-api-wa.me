@@ -119,6 +119,14 @@ echo $whatsapp->sendPresence($to, $status);
 echo $whatsapp->sendText($to, $text);
 ```
 
+### send Audio
+ ```php
+ $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
+ $url    = ''; // your MP3 or OGG audio URL    
+ $ptt    = true;
+echo $whatsapp->sendAudio($to, $url, $ptt  );
+```
+
 ###  send Media 
  
 ```php 
