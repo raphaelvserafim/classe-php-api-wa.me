@@ -127,9 +127,7 @@ $to         = '556696852025'; // if it's a group, use full id ex: 123456789@g.us
 $url        = '';
 $type       = 'image'; //  image |  video | audio | document
 $caption    = 'Hi';  
-$mimeType   = 'image/jpge';    
-$ptt        = false; // if it's audio 
-echo $whasapp->sendMedia($to, $url, $type, $caption, $mimeType, $ptt);
+echo $whasapp->sendMedia($to, $url, $type, $caption);
 ```
  
  ### Send Button
