@@ -28,66 +28,66 @@ use Cachesistemas\ClassePhpApiWame\WhatsApp;
 
 include_once 'vendor/autoload.php';
 
-$whasapp     = new WhatsApp(["server" => "API server", "key" => "Your Key Instance"]);
+$whatsapp     = new WhatsApp(["server" => "API server", "key" => "Your Key Instance"]);
 
 ```
 
 #### Get QrCode HTML
 ```php
-echo $whasapp->getQrCodeHTML();
+echo $whatsapp->getQrCodeHTML();
 ```
 
 #### Get QrCode Base64
 ```php
-echo $whasapp->getQrCodeBase64();
+echo $whatsapp->getQrCodeBase64();
 ```
 
 #### Infor Instance
 ```php
-echo $whasapp->inforInstance();
+echo $whatsapp->inforInstance();
 ```
 
 #### Update Webhook
 ```php
 $body = ["allowWebhook" => false,"webhookMessage" => "","webhookGroup" => "","webhookConnection" => "","webhookQrCode" => ""];
         
-echo $whasapp->updateWebhook($body);
+echo $whatsapp->updateWebhook($body);
 ```
 
 #### Logout
 ```php
-echo $whasapp->logout();
+echo $whatsapp->logout();
 ```
  
 ## Actions
 
 ### Get List Contacts
 ```php
-echo $whasapp->listContacts();
+echo $whatsapp->listContacts();
 ```
 
 ### Get Profile  Pic
 ```php
-echo $whasapp->profilePic('556696852025');
+echo $whatsapp->profilePic('556696852025');
 ```
 
 ### Update Profile Name
 ```php
-echo $whasapp->updateProfileName('Raphael Serafim');
+echo $whatsapp->updateProfileName('Raphael Serafim');
 ```
  
 ### Update Profile And Group  Picture
 ```php
 $url =''; // url image 
 $id  ='556696852025'; // if it's a group, use full id ex: 123456789@g.us 
-echo $whasapp->updateProfilePicture($id, $url);
+echo $whatsapp->updateProfilePicture($id, $url);
 ```
 
 ### Read Receipt
 ```php
 $MsgId ='';  
 $to  ='556696852025'; // if it's a group, use full id ex: 123456789@g.us 
-echo $whasapp->readReceipt($to, $MsgId);
+echo $whatsapp->readReceipt($to, $MsgId);
 ```
 
 ### Download Media  
@@ -100,7 +100,7 @@ echo $whasapp->readReceipt($to, $MsgId);
         "messageType" => "" 
     ] 
   ];
-echo $whasapp->downloadMediaMessage($body);
+echo $whatsapp->downloadMediaMessage($body);
 ```
 
 ## Send Message
@@ -109,14 +109,14 @@ echo $whasapp->downloadMediaMessage($body);
  ```php
  $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
  $status = 'composing';   // unavailable | available | composing | recording | paused
-echo $whasapp->sendPresence($to, $status);
+echo $whatsapp->sendPresence($to, $status);
 ```
 
 ### send Text
  ```php
  $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
  $text   = 'Hi';   
-echo $whasapp->sendText($to, $text);
+echo $whatsapp->sendText($to, $text);
 ```
 
 ###  send Media 
@@ -127,7 +127,7 @@ $to         = '556696852025'; // if it's a group, use full id ex: 123456789@g.us
 $url        = '';
 $type       = 'image'; //  image |  video | audio | document
 $caption    = 'Hi';  
-echo $whasapp->sendMedia($to, $url, $type, $caption);
+echo $whatsapp->sendMedia($to, $url, $type, $caption);
 ```
  
  ### Send Button
@@ -149,7 +149,7 @@ echo $whasapp->sendMedia($to, $url, $type, $caption);
             "footerText" => "Escolha uma opção"
         ]
     ];
-echo $whasapp->sendButton($body);
+echo $whatsapp->sendButton($body);
 ```
 
  ### Send Template Buttons
@@ -168,7 +168,7 @@ echo $whasapp->sendButton($body);
             "footerText" => "Visite o site para finalizar"
         ]
     ];
-echo $whasapp->sendTemplateButtons($body);
+echo $whatsapp->sendTemplateButtons($body);
 ```
  
 
@@ -201,7 +201,7 @@ echo $whasapp->sendTemplateButtons($body);
             "listType" => 0
         ]
     ];
-echo $whasapp->sendList($body);
+echo $whatsapp->sendList($body);
 ```
 
 
@@ -210,7 +210,7 @@ echo $whasapp->sendList($body);
  $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
  $name   = 'CACHE SISTEMAS';   
  $number = '+556696883327';
-echo $whasapp->sendContact($to, $name, $number);
+echo $whatsapp->sendContact($to, $name, $number);
 ```
 
 ### send Location
@@ -219,7 +219,7 @@ echo $whasapp->sendContact($to, $name, $number);
  $lat    = 35.000;   
  $lon    = 20.000;
  $address = 'Rua do fulando';
-echo $whasapp->sendLocation($to, $lat, $lon, $address);
+echo $whatsapp->sendLocation($to, $lat, $lon, $address);
 ```
 
 ### send Reaction
@@ -227,7 +227,7 @@ echo $whasapp->sendLocation($to, $lat, $lon, $address);
  $to     = '556696852025'; // if it's a group, use full id ex: 123456789@g.us  
  $text   =  '😘';   
  $msgId  =  '';
-echo $whasapp->sendReaction($to, $text, $msgId);
+echo $whatsapp->sendReaction($to, $text, $msgId);
 ```
 
 
@@ -235,27 +235,27 @@ echo $whasapp->sendReaction($to, $text, $msgId);
 
 ### Get list Group
 ```php 
-   echo $whasapp->listGroup();
+   echo $whatsapp->listGroup();
 ```
 
 ### Get infor Group
 ```php 
    $group_id = '123456789@g.us'; 
-   echo $whasapp->inforGroup($group_id);
+   echo $whatsapp->inforGroup($group_id);
 ```
 
 
 ### Get Invite Code Group
 ```php 
    $group_id = '123456789@g.us'; 
-   echo $whasapp->groupInviteCode($group_id);
+   echo $whatsapp->groupInviteCode($group_id);
 ```
 
  ### create Group
 ```php 
    $name = 'API PHP WhatsApp'; 
    $participants = ['556696852025'];
-   echo $whasapp->createGroup($name, $participants);
+   echo $whatsapp->createGroup($name, $participants);
 ```
 
 
@@ -263,7 +263,7 @@ echo $whasapp->sendReaction($to, $text, $msgId);
 ```php 
    $group_id     = '123456789@g.us'; 
    $participants = ['556696852025'];
-   echo $whasapp->addParticipantsGroup($group_id, $participants);
+   echo $whatsapp->addParticipantsGroup($group_id, $participants);
 ```
 
 
@@ -271,41 +271,41 @@ echo $whasapp->sendReaction($to, $text, $msgId);
 ```php 
    $group_id     = '123456789@g.us'; 
    $participants = ['556696852025'];
-   echo $whasapp->promoteParticipantsGroup($group_id, $participants);
+   echo $whatsapp->promoteParticipantsGroup($group_id, $participants);
 ```
 
  ### Demote Participants Group   
 ```php 
    $group_id     = '123456789@g.us'; 
    $participants = ['556696852025'];
-   echo $whasapp->demoteParticipantsGroup($group_id, $participants);
+   echo $whatsapp->demoteParticipantsGroup($group_id, $participants);
 ```
 
  ### Set Who Can Send Message Group  
 ```php 
    $group_id     = '123456789@g.us'; 
    // true = Admin; false= All 
-   echo $whasapp->setWhoCanSendMessageGroup($group_id, true);
+   echo $whatsapp->setWhoCanSendMessageGroup($group_id, true);
 ```
 
  ### Set Who Can Change Settings Group
 ```php 
    $group_id     = '123456789@g.us'; 
    // true = Admin; false= All 
-   echo $whasapp->setWhoCanChangeSettingsGroup($group_id, true);
+   echo $whatsapp->setWhoCanChangeSettingsGroup($group_id, true);
 ```
 
  ### Remove Participants Group  
 ```php 
    $group_id     = '123456789@g.us'; 
    $participants = ['556696852025'];
-   echo $whasapp->removeParticipantsGroup($group_id, $participants);
+   echo $whatsapp->removeParticipantsGroup($group_id, $participants);
 ```
 
  ### Leave Group
 ```php 
    $group_id     = '123456789@g.us'; 
-   echo $whasapp->leaveGroup($group_id);
+   echo $whatsapp->leaveGroup($group_id);
 ```
 
  
