@@ -217,7 +217,7 @@ class WhatsApp
     }
 
 
-    public function sendMedia($to, $url, $type, $caption, $mimeType, $ptt = false)
+    public function sendMedia($to, $url, $type, $caption, $mimeType = '', $ptt = false)
     {
 
         array_push($this->header, 'Content-Type: application/json');
@@ -228,9 +228,7 @@ class WhatsApp
                 "to" =>  $to,
                 "url" =>  $url,
                 "type" => $type,
-                "ptt" => $ptt,
                 "caption" => $caption,
-                "mimeType" => $mimeType
             ]
         ]);
         return $this->request();
