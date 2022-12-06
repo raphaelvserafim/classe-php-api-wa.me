@@ -77,7 +77,12 @@ class WhatsApp
         return $this->request();
     }
 
-
+    public function Block($admin_key,   $key, $block)
+    {
+        $this->parth  = "/manager/block?key={$key}&admin_key={$admin_key}&block={$block}";
+        $this->method = "DELETE";
+        return $this->request();
+    }
 
 
     //Instance
