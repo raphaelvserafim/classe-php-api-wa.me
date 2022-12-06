@@ -53,16 +53,6 @@ class WhatsApp
     public function Create($admin_key,  $key,   $body)
     {
 
-        /* EXEMPLO 
-        $body = [
-        "allowWebhook" => true, 
-        "webhookMessage" => "", 
-        "webhookGroup" => "", 
-        "webhookConnection" => "", 
-        "webhookQrCode" => "" 
-        ]; 
-        */
-
         $this->parth  = "/manager/create?key={$key}&admin_key={$admin_key}";
         $this->method = "POST";
         $this->body   = json_encode($body);
