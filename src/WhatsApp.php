@@ -63,7 +63,7 @@ class WhatsApp
         ]; 
         */
 
-        $this->parth  = "/instance/create?key={$key}&admin_key={$admin_key}";
+        $this->parth  = "/manager/create?key={$key}&admin_key={$admin_key}";
         $this->method = "POST";
         $this->body   = json_encode($body);
 
