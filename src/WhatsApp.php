@@ -72,7 +72,7 @@ class WhatsApp
 
     public function Delete($admin_key,   $key)
     {
-        $this->parth  = "/instance/delete?key={$key}&admin_key={$admin_key}";
+        $this->parth  = "/manager/delete?key={$key}&admin_key={$admin_key}";
         $this->method = "DELETE";
         return $this->request();
     }
@@ -80,7 +80,7 @@ class WhatsApp
     public function Block($admin_key,   $key, $block)
     {
         $this->parth  = "/manager/block?key={$key}&admin_key={$admin_key}&block={$block}";
-        $this->method = "DELETE";
+        $this->method = "PUT";
         return $this->request();
     }
 
