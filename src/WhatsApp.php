@@ -123,7 +123,7 @@ class WhatsApp
 
     public function listContacts()
     {
-        $this->parth  = "/action/contacts?key={$this->key}";
+        $this->parth  = "/actions/contacts?key={$this->key}";
         $this->method = "GET";
         return $this->request();
     }
