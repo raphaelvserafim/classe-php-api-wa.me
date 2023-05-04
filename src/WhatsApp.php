@@ -52,7 +52,7 @@ class WhatsApp
 
     public function Create($admin_key,  $key,   $body)
     {
-
+        array_push($this->header, 'Content-Type: application/json');
         $this->parth  = "/manager/create?key={$key}&admin_key={$admin_key}";
         $this->method = "POST";
         $this->body   = json_encode($body);
