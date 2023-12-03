@@ -1,20 +1,22 @@
 {
-    "name": "cachesistemas/classephpapiwame",
-    "description": "Classe PHP comunicação com api-wa.me",
-    "type": "library",
-    "homepage": "https://github.com/raphaelvserafim/classe-php-api-wa.me",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Cachesistemas\\ClassePhpApiWame\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Raphael Serafim",
-            "email": "raphaelvserafim@gmail.com"
-        }
-    ],
-    
-    "minimum-stability":"dev"
+  "name": "raphaelvserafim/client-php-api-wa-me",
+  "description": "Classe PHP para comunicação com api-wa.me",
+  "type": "library",
+  "homepage": "https://github.com/raphaelvserafim/client-php-api-wa-me",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Api\\Wame\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.2",
+    "ext-curl": "*"
+  },
+  "authors": [
+    {
+      "name": "Raphael Serafim",
+      "email": "raphaelvserafim@gmail.com"
+    }
+  ]
 }

@@ -6,16 +6,10 @@ Acessar: <a href="https://api-wa.me">api-wa.me</a>
 
 <a href="https://server.api-wa.me/docs/">Swagger</a>
 
-##### :
-<a href="https://web.whatsapp.com/send?phone=5566996852025&text=#GIT API WhatsApp"> 
-<img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" /> 
-</a>
-
-
 ## Installing via composer
 
 ```
-composer require cachesistemas/classephpapiwame
+composer require raphaelvserafim/client-php-api-wa-me
 ```
 
 ### EXAMPLES
@@ -24,12 +18,14 @@ composer require cachesistemas/classephpapiwame
 #####  WHATSAPP
 ```php
 
-use Cachesistemas\ClassePhpApiWame\WhatsApp;
+use Api\Wame\WhatsApp;
 
 include_once 'vendor/autoload.php';
 
-$whatsapp     = new WhatsApp(["server" => "API server", "key" => "Your Key Instance"]);
-
+$whatsapp     = new WhatsApp(
+    ["server" => "API server", 
+    "key" => "Your Key Instance"]
+    );
 ```
 
 #### Get QrCode HTML
@@ -49,8 +45,7 @@ echo $whatsapp->inforInstance();
 
 #### Update Webhook
 ```php
-$body = ["allowWebhook" => false,"webhookMessage" => "","webhookGroup" => "","webhookConnection" => "","webhookQrCode" => ""];
-        
+$body = ["allowWebhook" => false,"webhookMessage" => "","webhookGroup" => "","webhookConnection" => "","webhookQrCode" => "", "webhookMessageFromMe"=>"", "webhookHistory"=>""]; 
 echo $whatsapp->updateWebhook($body);
 ```
 
